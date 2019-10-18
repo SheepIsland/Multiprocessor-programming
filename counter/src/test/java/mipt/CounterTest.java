@@ -62,7 +62,7 @@ public class CounterTest {
 
     @Test
     public void testMagicExecution() throws Exception {
-        final ExecutorService executors = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+        final ExecutorService executors = Executors.newFixedThreadPool(NUMBER_OF_THREADS, new MagicCounterThreadFactory());
         final List<Future> futures = range(0, INCREMENTAL_CALLS_COUNT)
                 .mapToObj(i -> executors.submit(incrementRunnable(magicCounter)))
                 .collect(toList());

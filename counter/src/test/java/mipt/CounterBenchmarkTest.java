@@ -19,64 +19,48 @@ public class CounterBenchmarkTest {
         final Counter concurentCounter = new ConcurentCounter();
         final Counter lockCounter = new LockCounter();
         final Counter mutexCounter = new MutexCounter();
-        final Counter magicCounter = new MagicCounter(1);
     }
 
-//    @Benchmark
-//    @Group("ConcurentCounter")
-//    @GroupThreads(1)
-//    public void testConcurentCounterIncrement(final CounterState state) {
-//        state.concurentCounter.increment();
-//    }
-//
-//    @Benchmark
-//    @Group("ConcurentCounter")
-//    @GroupThreads(1)
-//    public long testConcurentCounterGetValue(final CounterState state) {
-//        return state.concurentCounter.getValue();
-//    }
-
-//    @Benchmark
-//    @Group("LockCounter")
-//    @GroupThreads(1)
-//    public void testLockCounterIncrement(final CounterState state) {
-//        state.lockCounter.increment();
-//    }
-//
-//    @Benchmark
-//    @Group("LockCounter")
-//    @GroupThreads(1)
-//    public long testLockCounterGetValue(final CounterState state) {
-//        return state.lockCounter.getValue();
-//    }
-//
-//    @Benchmark
-//    @Group("MutexCounter")
-//    @GroupThreads(1)
-//    public void testMutexCounterIncrement(final CounterState state) {
-//        state.mutexCounter.increment();
-//    }
-//
-//    @Benchmark
-//    @Group("MutexCounter")
-//    @GroupThreads(1)
-//    public long testMutexCounterGetValue(final CounterState state) {
-//        return state.mutexCounter.getValue();
-//
-//    }
+    @Benchmark
+    @Group("ConcurentCounter")
+    @GroupThreads(1)
+    public void testConcurentCounterIncrement(final CounterState state) {
+        state.concurentCounter.increment();
+    }
 
     @Benchmark
-    @Group("MagicCounter")
+    @Group("ConcurentCounter")
+    @GroupThreads(1)
+    public long testConcurentCounterGetValue(final CounterState state) {
+        return state.concurentCounter.getValue();
+    }
+
+    @Benchmark
+    @Group("LockCounter")
+    @GroupThreads(1)
+    public void testLockCounterIncrement(final CounterState state) {
+        state.lockCounter.increment();
+    }
+
+    @Benchmark
+    @Group("LockCounter")
+    @GroupThreads(1)
+    public long testLockCounterGetValue(final CounterState state) {
+        return state.lockCounter.getValue();
+    }
+
+    @Benchmark
+    @Group("MutexCounter")
     @GroupThreads(1)
     public void testMutexCounterIncrement(final CounterState state) {
-        state.magicCounter.increment();
+        state.mutexCounter.increment();
     }
 
     @Benchmark
-    @Group("MagicCounter")
+    @Group("MutexCounter")
     @GroupThreads(1)
     public long testMutexCounterGetValue(final CounterState state) {
-        return state.magicCounter.getValue();
+        return state.mutexCounter.getValue();
 
     }
 

@@ -24,8 +24,7 @@ public class MagicCounter implements Counter {
     }
 
     private void lock() {
-        //final int id = Integer.parseInt(Thread.currentThread().getName());
-        final int id =  getId();
+        final int id = Integer.parseInt(Thread.currentThread().getName());
 
         flag[id] = true;
         label[id] = max() + 1;
@@ -51,13 +50,8 @@ public class MagicCounter implements Counter {
     }
 
     private void unlock() {
-        //final int id = Integer.parseInt(Thread.currentThread().getName());
-        final int id = getId();
+        final int id = Integer.parseInt(Thread.currentThread().getName());
         label[id] = 0;
-    }
-
-    private int getId(){
-        return Integer.parseInt(Thread.currentThread().getName().split("-")[3]) - 1;
     }
 
     @Override
